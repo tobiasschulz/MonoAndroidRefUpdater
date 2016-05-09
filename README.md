@@ -24,7 +24,7 @@ Usage
 This is a command line program, so after compiling the project, you need to
 open a terminal window, navigate to the project directory and execute:
 
-    mono iOSRefUpdater.exe /path/to/third/party/assembly.dll
+    mono MonoAndroidRefUpdater.exe /path/to/third/party/assembly.dll
 
  and the third-party assembly will be converted in-place.
 

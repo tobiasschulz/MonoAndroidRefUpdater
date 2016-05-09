@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iOSRefUpdater", "iOSRefUpdater.csproj", "{ACD62166-21BC-4554-86E1-CD9B88BC64F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoAndroidRefUpdater", "MonoAndroidRefUpdater.csproj", "{ACD62166-21BC-4554-86E1-CD9B88BC64F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +15,6 @@ Global
 		{ACD62166-21BC-4554-86E1-CD9B88BC64F1}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = iOSRefUpdater.csproj
+		StartupItem = MonoAndroidRefUpdater.csproj
 	EndGlobalSection
 EndGlobal

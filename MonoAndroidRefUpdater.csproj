@@ -7,8 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{ACD62166-21BC-4554-86E1-CD9B88BC64F1}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>iOSRefUpdater</RootNamespace>
-    <AssemblyName>iOSRefUpdater</AssemblyName>
+    <RootNamespace>MonoAndroidRefUpdater</RootNamespace>
+    <AssemblyName>MonoAndroidRefUpdater</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
