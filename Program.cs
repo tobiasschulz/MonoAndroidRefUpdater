@@ -47,23 +47,35 @@ class AssemblyReferenceUpdater
 		return 1;
 	}
 
+	static int Error (string message)
+	{
+		Console.WriteLine ("Error: {0}", message);
+		return 1;
+	}
+
 	public static int Main (string[] args)
 	{
 		if (args.Length == 0)
 			return Usage ("No assembly was specified.");
 		string filename = args [0];
 		if (!File.Exists (filename))
-			return Usage (String.Format ("Could not find `{0}`.", filename));
+			return Error (String.Format ("Could not find `{0}`.", filename));
 		
 		string backup = args [0] + ".bak";
 		if (File.Exists (backup))
-			return Usage (String.Format ("Backup file `{0}` is already present.", backup));
+			return Error (String.Format ("Backup file `{0}` is already present.", backup));
 		
 		try {
 			File.Copy (args [0], backup);
+
+			var resolver = new DefaultAssemblyResolver ();
+			resolver.AddSearchDirectory (Path.GetDirectoryName (args [0]));
+			var parameters = new ReaderParameters {
+				AssemblyResolver = resolver,
+			};
 			
 			bool action = false;
-			var ad = AssemblyDefinition.ReadAssembly (args [0]);
+			var ad = AssemblyDefinition.ReadAssembly (args [0], parameters);
 			foreach (var reference in ad.MainModule.AssemblyReferences) {
 				switch (reference.FullName) {
 				case "Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065":
@@ -81,8 +93,10 @@ class AssemblyReferenceUpdater
 				Console.WriteLine ("No reference needed to be modified. Original file is unchanged.");
 			}
 			return 0;
+		} catch (BadImageFormatException) {
+			return Error ("Not a .NET assembly!");
 		} catch (Exception e) {
-			return Usage (e.ToString ());
+			return Error (e.ToString ());
 		}
 	}
 }
